@@ -1,0 +1,28 @@
+{
+  "name": "teradaktyl",
+  "version": "0.1.0",
+  "description": "Typescript Unit Testing Framework",
+  "main": "dist/src/teradaktyl.js",
+  "scripts": {
+    "tslint": "tslint -c tslint.json src/*.ts",
+    "test": "node dist/src/mityrn/mityrn.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piczelspydr/teradaktyl.git"
+  },
+  "author": "Jeff Brannon",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/piczelspydr/teradaktyl/issues"
+  },
+  "homepage": "https://github.com/piczelspydr/teradaktyl#readme",
+  "devDependencies": {
+    "tslint": "~5.11.0",
+    "tslint-config-prettier": "~1.14.0",
+    "typescript": "~3.0.1"
+  },
+  "dependencies": {
+    "@types/node": "~10.5.8"
+  }
+}

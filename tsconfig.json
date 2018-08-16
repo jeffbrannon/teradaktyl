@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "module": "commonjs",
+    "target": "es2017",
+    "lib": [ "es6" ],
+    "inlineSourceMap":  true,
+    "outDir": "dist",
+    "rootDir": "src",
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
