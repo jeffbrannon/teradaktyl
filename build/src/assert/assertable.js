@@ -18,29 +18,64 @@ function Test(description, assertMethod) {
 }
 exports.Test = Test;
 class Assert {
+    constructor() {
+        this.isMock = false;
+    }
     AreEqual(expectedValue, assertedValue) {
         if (expectedValue !== assertedValue) {
             throw new assertError_1.AssertError(`Expected value of ${expectedValue} but received value of ${assertedValue}.`);
         }
         else {
-            assertSuccess_1.AssertSuccess("ASSERT SUCCESS");
+            assertSuccess_1.AssertSuccess(this.isMock);
+        }
+    }
+    ErrorExpected(method) {
+        let errorFound = false;
+        try {
+            method();
+            errorFound = true;
+        }
+        catch (ex) {
+            errorFound = false;
+        }
+        if (errorFound) {
+            throw new assertError_1.AssertError(`Expected an Error to be thrown.`);
+        }
+        else {
+            assertSuccess_1.AssertSuccess(this.isMock);
+        }
+    }
+    ErrorNotExpected(method) {
+        try {
+            method();
+            assertSuccess_1.AssertSuccess(this.isMock);
+        }
+        catch (ex) {
+            throw new assertError_1.AssertError(`Did not expected an Error to be thrown.`);
         }
     }
     IsFalse(assertedValue) {
-        if (!assertedValue) {
+        if (assertedValue) {
             throw new assertError_1.AssertError(`Asserted value of ${assertedValue} is not false.`);
         }
         else {
-            assertSuccess_1.AssertSuccess("ASSERT SUCCESS");
+            assertSuccess_1.AssertSuccess(this.isMock);
         }
     }
     IsTrue(assertedValue) {
-        if (assertedValue) {
+        if (!assertedValue) {
             throw new assertError_1.AssertError(`Asserted value of ${assertedValue} is not true.`);
         }
         else {
-            assertSuccess_1.AssertSuccess("ASSERT SUCCESS");
+            assertSuccess_1.AssertSuccess(this.isMock);
         }
     }
 }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXNzZXJ0YWJsZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9hc3NlcnQvYXNzZXJ0YWJsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7Ozs7OztHQVNHOztBQUVILCtDQUE0QztBQUM1QyxtREFBZ0Q7QUFVaEQsU0FBZ0IsSUFBSSxDQUFDLFdBQW1CLEVBQUUsWUFBMEI7SUFDaEUsT0FBTyxDQUFDLEdBQUcsQ0FBQyxXQUFXLENBQUMsQ0FBQztJQUN6QixZQUFZLENBQUMsSUFBSSxNQUFNLEVBQUUsQ0FBQyxDQUFDO0FBQy9CLENBQUM7QUFIRCxvQkFHQztBQUVELE1BQU0sTUFBTTtJQUVELFFBQVEsQ0FBc0MsYUFBZ0IsRUFBRSxhQUFnQjtRQUNuRixJQUFHLGFBQWEsS0FBSyxhQUFhLEVBQUU7WUFDaEMsTUFBTSxJQUFJLHlCQUFXLENBQUMscUJBQXFCLGFBQWEsMEJBQTBCLGFBQWEsR0FBRyxDQUFDLENBQUM7U0FDdkc7YUFBTTtZQUNILDZCQUFhLENBQUMsZ0JBQWdCLENBQUMsQ0FBQztTQUNuQztJQUNMLENBQUM7SUFFTSxPQUFPLENBQXNDLGFBQWdCO1FBQ2hFLElBQUcsQ0FBQyxhQUFhLEVBQUU7WUFDZixNQUFNLElBQUkseUJBQVcsQ0FBQyxxQkFBcUIsYUFBYSxnQkFBZ0IsQ0FBQyxDQUFDO1NBQzdFO2FBQU07WUFDSCw2QkFBYSxDQUFDLGdCQUFnQixDQUFDLENBQUM7U0FDbkM7SUFDTCxDQUFDO0lBRU0sTUFBTSxDQUFzQyxhQUFnQjtRQUMvRCxJQUFHLGFBQWEsRUFBRTtZQUNkLE1BQU0sSUFBSSx5QkFBVyxDQUFDLHFCQUFxQixhQUFhLGVBQWUsQ0FBQyxDQUFDO1NBQzVFO2FBQU07WUFDSCw2QkFBYSxDQUFDLGdCQUFnQixDQUFDLENBQUM7U0FDbkM7SUFDTCxDQUFDO0NBQ0oifQ==
+class MockAssert extends Assert {
+    constructor() {
+        super(...arguments);
+        this.isMock = true;
+    }
+}
+exports.MockAssert = MockAssert;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXNzZXJ0YWJsZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9hc3NlcnQvYXNzZXJ0YWJsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7Ozs7OztHQVNHOztBQUVILCtDQUE0QztBQUM1QyxtREFBZ0Q7QUFVaEQsU0FBZ0IsSUFBSSxDQUFDLFdBQW1CLEVBQUUsWUFBMEI7SUFDaEUsT0FBTyxDQUFDLEdBQUcsQ0FBQyxXQUFXLENBQUMsQ0FBQztJQUN6QixZQUFZLENBQUMsSUFBSSxNQUFNLEVBQUUsQ0FBQyxDQUFDO0FBQy9CLENBQUM7QUFIRCxvQkFHQztBQUlELE1BQU0sTUFBTTtJQUFaO1FBRWMsV0FBTSxHQUFHLEtBQUssQ0FBQztJQWtEN0IsQ0FBQztJQWhEVSxRQUFRLENBQXNDLGFBQWdCLEVBQUUsYUFBZ0I7UUFDbkYsSUFBRyxhQUFhLEtBQUssYUFBYSxFQUFFO1lBQ2hDLE1BQU0sSUFBSSx5QkFBVyxDQUFDLHFCQUFxQixhQUFhLDBCQUEwQixhQUFhLEdBQUcsQ0FBQyxDQUFDO1NBQ3ZHO2FBQU07WUFDSCw2QkFBYSxDQUFDLElBQUksQ0FBQyxNQUFNLENBQUMsQ0FBQztTQUM5QjtJQUNMLENBQUM7SUFFTSxhQUFhLENBQUMsTUFBVztRQUM1QixJQUFJLFVBQVUsR0FBRyxLQUFLLENBQUM7UUFDdkIsSUFBSTtZQUNBLE1BQU0sRUFBRSxDQUFDO1lBQ1QsVUFBVSxHQUFHLElBQUksQ0FBQztTQUNyQjtRQUFDLE9BQU0sRUFBRSxFQUFFO1lBQ1IsVUFBVSxHQUFHLEtBQUssQ0FBQztTQUN0QjtRQUVELElBQUcsVUFBVSxFQUFFO1lBQ1gsTUFBTSxJQUFJLHlCQUFXLENBQUMsaUNBQWlDLENBQUMsQ0FBQztTQUM1RDthQUFNO1lBQ0gsNkJBQWEsQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLENBQUM7U0FDOUI7SUFDTCxDQUFDO0lBRU0sZ0JBQWdCLENBQUMsTUFBVztRQUMvQixJQUFJO1lBQ0EsTUFBTSxFQUFFLENBQUM7WUFDVCw2QkFBYSxDQUFDLElBQUksQ0FBQyxNQUFNLENBQUMsQ0FBQztTQUM5QjtRQUFDLE9BQU0sRUFBRSxFQUFFO1lBQ1IsTUFBTSxJQUFJLHlCQUFXLENBQUMseUNBQXlDLENBQUMsQ0FBQztTQUNwRTtJQUNMLENBQUM7SUFFTSxPQUFPLENBQXNDLGFBQWdCO1FBQ2hFLElBQUcsYUFBYSxFQUFFO1lBQ2QsTUFBTSxJQUFJLHlCQUFXLENBQUMscUJBQXFCLGFBQWEsZ0JBQWdCLENBQUMsQ0FBQztTQUM3RTthQUFNO1lBQ0gsNkJBQWEsQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLENBQUM7U0FDOUI7SUFDTCxDQUFDO0lBRU0sTUFBTSxDQUFzQyxhQUFnQjtRQUMvRCxJQUFHLENBQUMsYUFBYSxFQUFFO1lBQ2YsTUFBTSxJQUFJLHlCQUFXLENBQUMscUJBQXFCLGFBQWEsZUFBZSxDQUFDLENBQUM7U0FDNUU7YUFBTTtZQUNILDZCQUFhLENBQUMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxDQUFDO1NBQzlCO0lBQ0wsQ0FBQztDQUNKO0FBRUQsTUFBYSxVQUFXLFNBQVEsTUFBTTtJQUF0Qzs7UUFDYyxXQUFNLEdBQUcsSUFBSSxDQUFDO0lBQzVCLENBQUM7Q0FBQTtBQUZELGdDQUVDIn0=

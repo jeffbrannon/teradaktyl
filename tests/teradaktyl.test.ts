@@ -9,8 +9,19 @@
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {IAssertable, Test} from '../src/assert/assertable';
+import { MockAssert } from '../src/assert/assertable';
+import { Teradaktyl } from '../src/teradaktyl';
 
-Test("Some test", (assert: IAssertable) => {
-    assert.AreEqual(1, 1);
+const mockAssertMethod = new MockAssert();
+
+Teradaktyl.Test("Assert AreEqual when values are equal", (assert: Teradaktyl.IAssertable) => {
+    assert.ErrorNotExpected(() => {
+        mockAssertMethod.AreEqual(1, 1);
+    });
+});
+
+Teradaktyl.Test("Assert AreEqual when values not equal", (assert: Teradaktyl.IAssertable) => {
+    assert.ErrorExpected(() => {
+        mockAssertMethod.AreEqual(1, 2);
+    });
 });

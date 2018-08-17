@@ -9,6 +9,8 @@
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export function AssertSuccess(message: string) {
-    console.info(message);
+export function AssertSuccess(isMock: boolean, message?: string) {
+    if(!isMock) {
+        console.info(message || "ASSERT SUCCESS");
+    }
 }

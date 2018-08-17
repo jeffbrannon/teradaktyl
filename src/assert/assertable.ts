@@ -14,40 +14,73 @@ import { AssertSuccess } from './assertSuccess';
 
 export interface IAssertable {
     AreEqual<T extends string | number | boolean>(expectedValue: T, assertedValue: T) : void,
+    ErrorExpected(method: any): void,
+    ErrorNotExpected(method: any): void,
     IsTrue<T extends string | number | boolean>(assertedValue: T) : void,
     IsFalse<T extends string | number | boolean>(assertedValue: T) : void
 }
-
-export type AssertMethod = (Assert: IAssertable)  => void
 
 export function Test(description: string, assertMethod: AssertMethod): void {
     console.log(description);
     assertMethod(new Assert());
 }
 
+type AssertMethod = (Assert: IAssertable)  => void
+
 class Assert implements IAssertable {
 
+    protected isMock = false;
+    
     public AreEqual<T extends string | number | boolean>(expectedValue: T, assertedValue: T): void {
         if(expectedValue !== assertedValue) {
             throw new AssertError(`Expected value of ${expectedValue} but received value of ${assertedValue}.`);
         } else {
-            AssertSuccess("ASSERT SUCCESS");
+            AssertSuccess(this.isMock);
+        }
+    }
+
+    public ErrorExpected(method: any): void {
+        let errorFound = false;
+        try {
+            method();
+            errorFound = true;
+        } catch(ex) {
+            errorFound = false;
+        }
+
+        if(errorFound) {
+            throw new AssertError(`Expected an Error to be thrown.`);
+        } else {
+            AssertSuccess(this.isMock);
+        }
+    }
+
+    public ErrorNotExpected(method: any): void {
+        try {
+            method();
+            AssertSuccess(this.isMock);
+        } catch(ex) {
+            throw new AssertError(`Did not expected an Error to be thrown.`);
         }
     }
 
     public IsFalse<T extends string | number | boolean>(assertedValue: T): void {
-        if(!assertedValue) {
+        if(assertedValue) {
             throw new AssertError(`Asserted value of ${assertedValue} is not false.`);
         } else {
-            AssertSuccess("ASSERT SUCCESS");
+            AssertSuccess(this.isMock);
         }
     }
 
     public IsTrue<T extends string | number | boolean>(assertedValue: T): void {
-        if(assertedValue) {
+        if(!assertedValue) {
             throw new AssertError(`Asserted value of ${assertedValue} is not true.`);
         } else {
-            AssertSuccess("ASSERT SUCCESS");
+            AssertSuccess(this.isMock);
         }
     }
+}
+
+export class MockAssert extends Assert {
+    protected isMock = true;
 }
