@@ -9,8 +9,10 @@
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {IAssertable, Test} from '../src/assert/assertable';
-
-Test("Some test", (assert: IAssertable) => {
-    assert.AreEqual(1, 1);
-});
+export class AssertError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = "ASSERT ERROR";
+        this.stack = "";
+    }
+}

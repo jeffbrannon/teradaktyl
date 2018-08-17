@@ -1,3 +1,4 @@
+"use strict";
 /*
  * Copyright (c) 2018. Jeff Brannon
  * Website: https://piczelspydr.github.io/
@@ -8,9 +9,9 @@
  * teradaktyl is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-import {IAssertable, Test} from '../src/assert/assertable';
-
-Test("Some test", (assert: IAssertable) => {
-    assert.AreEqual(1, 1);
-});
+Object.defineProperty(exports, "__esModule", { value: true });
+function AssertSuccess(message) {
+    console.info(message);
+}
+exports.AssertSuccess = AssertSuccess;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXNzZXJ0U3VjY2Vzcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9hc3NlcnQvYXNzZXJ0U3VjY2Vzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7Ozs7OztHQVNHOztBQUVILFNBQWdCLGFBQWEsQ0FBQyxPQUFlO0lBQ3pDLE9BQU8sQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLENBQUM7QUFDMUIsQ0FBQztBQUZELHNDQUVDIn0=

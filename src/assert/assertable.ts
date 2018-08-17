@@ -9,30 +9,45 @@
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { AssertError } from './assertError';
+import { AssertSuccess } from './assertSuccess';
+
 export interface IAssertable {
-    AreEqual<T extends string | number | boolean>(expectedValue: T, assertedValue: T) : void
+    AreEqual<T extends string | number | boolean>(expectedValue: T, assertedValue: T) : void,
+    IsTrue<T extends string | number | boolean>(assertedValue: T) : void,
+    IsFalse<T extends string | number | boolean>(assertedValue: T) : void
 }
 
-const Assert: IAssertable = {
-    AreEqual
-};
+export type AssertMethod = (Assert: IAssertable)  => void
 
-function AreEqual<T>(expectedValue: T, assertedValue: T): void {
-    if(expectedValue !== assertedValue) {
-        const error = new Error(`Expected value of ${expectedValue} but received value of ${assertedValue}.`);
-        error.name = "ASSERT ERROR";
-        error.stack = "";
-        throw error;
-    } else {
-        console.info("ASSERT SUCCESS");
-    }
-}
-
-export interface AssertMethod {
-    (Assert: IAssertable) : void
-}
-
-export function TestMethod(description: string, assertMethod: AssertMethod): void {
+export function Test(description: string, assertMethod: AssertMethod): void {
     console.log(description);
-    assertMethod(Assert);
+    assertMethod(new Assert());
+}
+
+class Assert implements IAssertable {
+
+    public AreEqual<T extends string | number | boolean>(expectedValue: T, assertedValue: T): void {
+        if(expectedValue !== assertedValue) {
+            throw new AssertError(`Expected value of ${expectedValue} but received value of ${assertedValue}.`);
+        } else {
+            AssertSuccess("ASSERT SUCCESS");
+        }
+    }
+
+    public IsFalse<T extends string | number | boolean>(assertedValue: T): void {
+        if(!assertedValue) {
+            throw new AssertError(`Asserted value of ${assertedValue} is not false.`);
+        } else {
+            AssertSuccess("ASSERT SUCCESS");
+        }
+    }
+
+    public IsTrue<T extends string | number | boolean>(assertedValue: T): void {
+        if(assertedValue) {
+            throw new AssertError(`Asserted value of ${assertedValue} is not true.`);
+        } else {
+            AssertSuccess("ASSERT SUCCESS");
+        }
+    }
 }

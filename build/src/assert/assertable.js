@@ -10,23 +10,37 @@
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-const Assert = {
-    AreEqual
-};
-function AreEqual(expectedValue, assertedValue) {
-    if (expectedValue !== assertedValue) {
-        const error = new Error(`Expected value of ${expectedValue} but received value of ${assertedValue}.`);
-        error.name = "ASSERT ERROR";
-        error.stack = "";
-        throw error;
-    }
-    else {
-        console.info("ASSERT SUCCESS");
-    }
-}
-function TestMethod(description, assertMethod) {
+const assertError_1 = require("./assertError");
+const assertSuccess_1 = require("./assertSuccess");
+function Test(description, assertMethod) {
     console.log(description);
-    assertMethod(Assert);
+    assertMethod(new Assert());
 }
-exports.TestMethod = TestMethod;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXNzZXJ0YWJsZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9hc3NlcnQvYXNzZXJ0YWJsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7Ozs7OztHQVNHOztBQU1ILE1BQU0sTUFBTSxHQUFnQjtJQUN4QixRQUFRO0NBQ1gsQ0FBQztBQUVGLFNBQVMsUUFBUSxDQUFJLGFBQWdCLEVBQUUsYUFBZ0I7SUFDbkQsSUFBRyxhQUFhLEtBQUssYUFBYSxFQUFFO1FBQ2hDLE1BQU0sS0FBSyxHQUFHLElBQUksS0FBSyxDQUFDLHFCQUFxQixhQUFhLDBCQUEwQixhQUFhLEdBQUcsQ0FBQyxDQUFDO1FBQ3RHLEtBQUssQ0FBQyxJQUFJLEdBQUcsY0FBYyxDQUFDO1FBQzVCLEtBQUssQ0FBQyxLQUFLLEdBQUcsRUFBRSxDQUFDO1FBQ2pCLE1BQU0sS0FBSyxDQUFDO0tBQ2Y7U0FBTTtRQUNILE9BQU8sQ0FBQyxJQUFJLENBQUMsZ0JBQWdCLENBQUMsQ0FBQztLQUNsQztBQUNMLENBQUM7QUFNRCxTQUFnQixVQUFVLENBQUMsV0FBbUIsRUFBRSxZQUEwQjtJQUN0RSxPQUFPLENBQUMsR0FBRyxDQUFDLFdBQVcsQ0FBQyxDQUFDO0lBQ3pCLFlBQVksQ0FBQyxNQUFNLENBQUMsQ0FBQztBQUN6QixDQUFDO0FBSEQsZ0NBR0MifQ==
+exports.Test = Test;
+class Assert {
+    AreEqual(expectedValue, assertedValue) {
+        if (expectedValue !== assertedValue) {
+            throw new assertError_1.AssertError(`Expected value of ${expectedValue} but received value of ${assertedValue}.`);
+        }
+        else {
+            assertSuccess_1.AssertSuccess("ASSERT SUCCESS");
+        }
+    }
+    IsFalse(assertedValue) {
+        if (!assertedValue) {
+            throw new assertError_1.AssertError(`Asserted value of ${assertedValue} is not false.`);
+        }
+        else {
+            assertSuccess_1.AssertSuccess("ASSERT SUCCESS");
+        }
+    }
+    IsTrue(assertedValue) {
+        if (assertedValue) {
+            throw new assertError_1.AssertError(`Asserted value of ${assertedValue} is not true.`);
+        }
+        else {
+            assertSuccess_1.AssertSuccess("ASSERT SUCCESS");
+        }
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXNzZXJ0YWJsZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9hc3NlcnQvYXNzZXJ0YWJsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7Ozs7OztHQVNHOztBQUVILCtDQUE0QztBQUM1QyxtREFBZ0Q7QUFVaEQsU0FBZ0IsSUFBSSxDQUFDLFdBQW1CLEVBQUUsWUFBMEI7SUFDaEUsT0FBTyxDQUFDLEdBQUcsQ0FBQyxXQUFXLENBQUMsQ0FBQztJQUN6QixZQUFZLENBQUMsSUFBSSxNQUFNLEVBQUUsQ0FBQyxDQUFDO0FBQy9CLENBQUM7QUFIRCxvQkFHQztBQUVELE1BQU0sTUFBTTtJQUVELFFBQVEsQ0FBc0MsYUFBZ0IsRUFBRSxhQUFnQjtRQUNuRixJQUFHLGFBQWEsS0FBSyxhQUFhLEVBQUU7WUFDaEMsTUFBTSxJQUFJLHlCQUFXLENBQUMscUJBQXFCLGFBQWEsMEJBQTBCLGFBQWEsR0FBRyxDQUFDLENBQUM7U0FDdkc7YUFBTTtZQUNILDZCQUFhLENBQUMsZ0JBQWdCLENBQUMsQ0FBQztTQUNuQztJQUNMLENBQUM7SUFFTSxPQUFPLENBQXNDLGFBQWdCO1FBQ2hFLElBQUcsQ0FBQyxhQUFhLEVBQUU7WUFDZixNQUFNLElBQUkseUJBQVcsQ0FBQyxxQkFBcUIsYUFBYSxnQkFBZ0IsQ0FBQyxDQUFDO1NBQzdFO2FBQU07WUFDSCw2QkFBYSxDQUFDLGdCQUFnQixDQUFDLENBQUM7U0FDbkM7SUFDTCxDQUFDO0lBRU0sTUFBTSxDQUFzQyxhQUFnQjtRQUMvRCxJQUFHLGFBQWEsRUFBRTtZQUNkLE1BQU0sSUFBSSx5QkFBVyxDQUFDLHFCQUFxQixhQUFhLGVBQWUsQ0FBQyxDQUFDO1NBQzVFO2FBQU07WUFDSCw2QkFBYSxDQUFDLGdCQUFnQixDQUFDLENBQUM7U0FDbkM7SUFDTCxDQUFDO0NBQ0oifQ==
