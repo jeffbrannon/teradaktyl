@@ -9,12 +9,6 @@
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {testFiles} from './testFiles';
+import {testRunner} from './runner/testRunner';
 
-testFiles().forEach((filename:string) => {
-    console.info(`Testing File: ${filename}`);
-    require(filename);
-    console.info(`Success Testing File: ${filename}`);
-});
-
-
+testRunner();

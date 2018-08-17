@@ -1,3 +1,4 @@
+"use strict";
 /*
  * Copyright (c) 2018. Jeff Brannon
  * Website: https://piczelspydr.github.io/
@@ -8,28 +9,7 @@
  * teradaktyl is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
-
+Object.defineProperty(exports, "__esModule", { value: true });
 const path = require('path');
-const fs = require('fs');
-
-import {rootTestPath} from './testPath';
-
-export function testFiles():string[] {
-    return GetTestFilesFromPath(rootTestPath);
-}
-
-function GetTestFilesFromPath(dir: string, fileList?: string[]): string[] {
-    let fileListLocal = fileList || [];
-    if(fs.existsSync(dir)) {
-        const files = fs.readdirSync(dir).forEach((file: string) => {
-            const fullFilePath = path.join(dir, file);
-            if (fs.statSync(fullFilePath).isDirectory()) {
-                fileListLocal = GetTestFilesFromPath(fullFilePath, fileListLocal);
-            }
-            else {
-                fileListLocal.push(fullFilePath);
-            }
-        });
-    }
-    return fileListLocal;
-}
+exports.rootTestPath = path.join(__dirname, "../..", process.argv.slice(2, 3).toString());
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGVzdFBhdGguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9zcmMvcnVubmVyL3Rlc3RQYXRoLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7Ozs7O0dBU0c7O0FBRUgsTUFBTSxJQUFJLEdBQUcsT0FBTyxDQUFDLE1BQU0sQ0FBQyxDQUFDO0FBRWhCLFFBQUEsWUFBWSxHQUFHLElBQUksQ0FBQyxJQUFJLENBQUMsU0FBUyxFQUFFLE9BQU8sRUFBRSxPQUFPLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUMsUUFBUSxFQUFFLENBQUMsQ0FBQyJ9

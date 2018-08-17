@@ -10,5 +10,26 @@
  */
 
 const path = require('path');
+const fs = require('fs');
 
-export const rootTestPath = path.join(__dirname, "..", process.argv.slice(2, 3).toString());
+import {rootTestPath} from './testPath';
+
+export function testFiles():string[] {
+    return GetTestFilesFromPath(rootTestPath);
+}
+
+function GetTestFilesFromPath(dir: string, fileList?: string[]): string[] {
+    let fileListLocal = fileList || [];
+    if(fs.existsSync(dir)) {
+        const files = fs.readdirSync(dir).forEach((file: string) => {
+            const fullFilePath = path.join(dir, file);
+            if (fs.statSync(fullFilePath).isDirectory()) {
+                fileListLocal = GetTestFilesFromPath(fullFilePath, fileListLocal);
+            }
+            else {
+                fileListLocal.push(fullFilePath);
+            }
+        });
+    }
+    return fileListLocal;
+}
