@@ -1,0 +1,10 @@
+<component name="CopyrightManager">
+  <settings default="PiczelSpydr">
+    <module2copyright>
+      <element module="All" copyright="PiczelSpydr" />
+    </module2copyright>
+    <LanguageOptions name="__TEMPLATE__">
+      <option name="block" value="true" />
+    </LanguageOptions>
+  </settings>
+</component>

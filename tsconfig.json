@@ -5,7 +5,7 @@
     "target": "es2017",
     "lib": [ "es6" ],
     "inlineSourceMap":  true,
-    "outDir": "dist",
+    "outDir": "build",
     "rootDir": "src",
     /* Strict Type-Checking Options */
     "strict": true,
