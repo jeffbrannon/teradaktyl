@@ -13,8 +13,6 @@ import {testFiles} from './testFiles';
 
 export function testRunner() {
     testFiles().forEach((filename:string) => {
-        console.info(`Testing File: ${filename}`);
         require(filename);
-        console.info(`Success Testing File: ${filename}`);
     });
 }

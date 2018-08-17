@@ -26,7 +26,7 @@ function GetTestFilesFromPath(dir: string, fileList?: string[]): string[] {
             if (fs.statSync(fullFilePath).isDirectory()) {
                 fileListLocal = GetTestFilesFromPath(fullFilePath, fileListLocal);
             }
-            else {
+            else if(file.endsWith(".test.js")) {
                 fileListLocal.push(fullFilePath);
             }
         });

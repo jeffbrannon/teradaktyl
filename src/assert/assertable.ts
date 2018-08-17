@@ -9,8 +9,30 @@
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {IAssertable, TestMethod} from '../src/assert/assertable';
+export interface IAssertable {
+    AreEqual<T extends string | number | boolean>(expectedValue: T, assertedValue: T) : void
+}
 
-TestMethod("Some test", (assert: IAssertable) => {
-    assert.AreEqual(1, 1);
-});
+const Assert: IAssertable = {
+    AreEqual
+};
+
+function AreEqual<T>(expectedValue: T, assertedValue: T): void {
+    if(expectedValue !== assertedValue) {
+        const error = new Error(`Expected value of ${expectedValue} but received value of ${assertedValue}.`);
+        error.name = "ASSERT ERROR";
+        error.stack = "";
+        throw error;
+    } else {
+        console.info("ASSERT SUCCESS");
+    }
+}
+
+export interface AssertMethod {
+    (Assert: IAssertable) : void
+}
+
+export function TestMethod(description: string, assertMethod: AssertMethod): void {
+    console.log(description);
+    assertMethod(Assert);
+}
