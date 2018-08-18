@@ -11,8 +11,4 @@
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-console.log("test runner starting");
-
 require("./build/src/teradaktyl");
-
-console.log("test runner ended");

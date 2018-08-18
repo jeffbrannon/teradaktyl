@@ -9,7 +9,7 @@
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { MockAssert } from '../src/assert/assertable';
+import { MockAssert } from "../src/assert/assertable";
 import { Teradaktyl } from '../src/teradaktyl';
 
 const mockAssertMethod = new MockAssert();

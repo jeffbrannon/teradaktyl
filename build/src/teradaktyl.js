@@ -13,5 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Teradaktyl = require("./assert/assertable");
 exports.Teradaktyl = Teradaktyl;
 const testRunner_1 = require("./runner/testRunner");
+console.log("test runner starting");
 testRunner_1.testRunner();
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGVyYWRha3R5bC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy90ZXJhZGFrdHlsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7Ozs7O0dBU0c7O0FBRUgsa0RBQWtEO0FBS3pDLGdDQUFVO0FBSm5CLG9EQUErQztBQUUvQyx1QkFBVSxFQUFFLENBQUMifQ==
+console.log("test runner ended");
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGVyYWRha3R5bC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy90ZXJhZGFrdHlsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7Ozs7O0dBU0c7O0FBRUgsa0RBQWtEO0FBU3pDLGdDQUFVO0FBUm5CLG9EQUErQztBQUUvQyxPQUFPLENBQUMsR0FBRyxDQUFDLHNCQUFzQixDQUFDLENBQUM7QUFFcEMsdUJBQVUsRUFBRSxDQUFDO0FBRWIsT0FBTyxDQUFDLEdBQUcsQ0FBQyxtQkFBbUIsQ0FBQyxDQUFDIn0=

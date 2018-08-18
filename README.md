@@ -39,10 +39,18 @@ npm test
 ```
 
 ## Creating Tests
+**Test Driven Development** is a software development methodology for facilitating clean, minimal code.
+It is based around the process of first writing a test to satisfy a requirement, and then writing the code to get the test to pass.
+### Scenario
+Assume we have a requirement to create a function which will add 2 numbers together
+##### 1. Create the failing test to satisfy the requirement
 ###### Create a root level folder to group all of your projects tests...
 In the root folder of your project, create a new folder named **tests**
-###### Create your first test...
-Within this **tests** folder, create a new Typescript file named **example.test.ts**
+###### Create your test file...
+Within this **tests** folder, create a new Typescript file named **sum.test.ts**
+
+
+
 
 # Coming in Future Iterations...
 #### Dependency Injection

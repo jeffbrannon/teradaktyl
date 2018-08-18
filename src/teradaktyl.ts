@@ -12,6 +12,10 @@
 import * as Teradaktyl from './assert/assertable';
 import {testRunner} from './runner/testRunner';
 
+console.log("test runner starting");
+
 testRunner();
+
+console.log("test runner ended");
 
 export { Teradaktyl }

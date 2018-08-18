@@ -6,7 +6,7 @@
     "lib": [ "es6" ],
     "inlineSourceMap":  true,
     "outDir": "build",
-    "rootDir": "src",
+    "rootDir": ".",
     "moduleResolution": "node",
     /* Strict Type-Checking Options */
     "strict": true,
@@ -15,7 +15,9 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
-    "alwaysStrict": true
+    "alwaysStrict": true,
+    /* declaration */
+    "declaration": true
   },
   "exclude": [
     "node_modules"
