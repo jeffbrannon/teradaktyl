@@ -7,6 +7,7 @@
     "inlineSourceMap":  true,
     "outDir": "build",
     "rootDir": "src",
+    "moduleResolution": "node",
     /* Strict Type-Checking Options */
     "strict": true,
     "noImplicitAny": true,
