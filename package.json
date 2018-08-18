@@ -4,7 +4,7 @@
   "description": "Typescript Unit Testing Framework",
   "main": "teradaktyl.js",
   "scripts": {
-    "test": "node build/src/teradaktyl.js tests",
+    "test": "node build/src/teradaktyl.js build/tests",
     "tslint": "tslint -c tslint.json src/*.ts"
   },
   "repository": {

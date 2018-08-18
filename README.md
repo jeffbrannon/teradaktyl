@@ -19,18 +19,18 @@ npm install --save-dev teradaktyl
 ## Running Tests
 #### From the Command-Line
 
-**teradaktyl** can be executed from the command-line and takes 1 parameter; the name of the folder where your tests are stored.
+**teradaktyl** can be executed from the command-line and takes 1 parameter; the name of the folder where the your Typescript tests are compiled to.
 ##### Example
-###### Where the tests are stored in a folder called 'tests'
+###### Where the tests are compiled to a folder named 'tests' within an "outdir" named 'build'.
 ```bash
-teradaktyl tests
+teradaktyl build/tests
 ```
 #### From your Project
 
 Add a **"test"** script into the scripts sections of your projects **package.json** file.
 ```bash
 "scripts": {
-    "test": "teradaktyl tests"
+    "test": "teradaktyl build/tests"
   }
 ```
 Tests can now be executed from a terminal using the following
@@ -39,7 +39,10 @@ npm test
 ```
 
 ## Creating Tests
-
+###### Create a root level folder to group all of your projects tests...
+In the root folder of your project, create a new folder named **tests**
+###### Create your first test...
+Within this **tests** folder, create a new Typescript file named **example.test.ts**
 
 # Coming in Future Iterations...
 #### Dependency Injection

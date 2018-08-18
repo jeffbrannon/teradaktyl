@@ -11,4 +11,4 @@
 
 const path = require('path');
 
-export const rootTestPath = path.join(__dirname, "../..", process.argv.slice(2, 3).toString());
+export const rootTestPath = path.join(process.cwd(), process.argv.slice(2, 3).toString());
