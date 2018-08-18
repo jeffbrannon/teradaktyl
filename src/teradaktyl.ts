@@ -9,8 +9,8 @@
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {testRunner} from './runner/testRunner';
 import * as Teradaktyl from './assert/assertable';
+import {testRunner} from './runner/testRunner';
 
 testRunner();
 

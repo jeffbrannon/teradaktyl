@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*
  * Copyright (c) 2018. Jeff Brannon
  * Website: https://piczelspydr.github.io/
@@ -9,15 +11,8 @@
  * You should have received a copy of the GNU General Public License along with teradaktyl.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {testFiles} from './testFiles';
+console.log("test runner starting");
 
-export function testRunner() {
-    const files: string[] = testFiles();
-    if(files.length === 0) {
-        console.info("No test files.");
-    } else {
-        files.forEach((filename:string) => {
-            require(filename);
-        });
-    }
-}
+require("./build/src/teradaktyl");
+
+console.log("test runner ended");

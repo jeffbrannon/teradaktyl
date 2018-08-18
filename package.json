@@ -2,10 +2,10 @@
   "name": "teradaktyl",
   "version": "1.0.0",
   "description": "Typescript Unit Testing Framework",
-  "main": "build/src/teradaktyl.js",
+  "main": "teradaktyl.js",
   "scripts": {
-    "tslint": "tslint -c tslint.json src/*.ts",
-    "test": "node build/src/teradaktyl.js tests"
+    "test": "node build/src/teradaktyl.js tests",
+    "tslint": "tslint -c tslint.json src/*.ts"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,8 @@
   },
   "dependencies": {
     "@types/node": "~10.5.8"
+  },
+  "bin": {
+    "teradaktyl": "./teradaktyl.js"
   }
 }
