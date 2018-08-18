@@ -12,20 +12,34 @@ Future iterations will include mocking and dependency injection features.
 # Getting Started
 
 ## Installing
-teradaktyl can be installed via npm
+**teradaktyl** can be installed via npm
 ```bash
 npm install --save-dev teradaktyl
 ```
 ## Running Tests
 #### From the Command-Line
-teradaktyl can be executed from the command-line.
-Open a terminal and change directory to the root of your project.
-teradaktyl takes 1 parameter, the name of the folder where your tests are stored.
+
+**teradaktyl** can be executed from the command-line and takes 1 parameter; the name of the folder where your tests are stored.
 ##### Example
 ###### Where the tests are stored in a folder called 'tests'
 ```bash
 teradaktyl tests
 ```
+#### From your Project
+
+Add a **"test"** script into the scripts sections of your projects **package.json** file.
+```bash
+"scripts": {
+    "test": "teradaktyl tests"
+  }
+```
+Tests can now be executed from a terminal using the following
+```bash
+npm test
+```
+
+## Creating Tests
+
 
 # Coming in Future Iterations...
 #### Dependency Injection
