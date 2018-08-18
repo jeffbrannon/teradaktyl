@@ -3,34 +3,34 @@
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 
-#Typescript Unit Testing Framework
+# Typescript Unit Testing Framework
 
 A light, unit testing framework for Typescript, created mostly to assist with the understanding of how unit testing frameworks function. This framework includes both a test runner and assertion library. It is very simple to setup and has no additional dependencies.
 
 Future iterations will include mocking and dependency injection features.
 
-#Getting Started
+# Getting Started
 
-##Installing
+## Installing
 teradaktyl can be installed via npm
 ```bash
 npm install --save-dev teradaktyl
 ```
-##Running Tests
-####From the Command-Line
+## Running Tests
+#### From the Command-Line
 teradaktyl can be executed from the command-line.
 Open a terminal and change directory to the root of your project.
 teradaktyl takes 1 parameter, the name of the folder where your tests are stored.
 ##### Example
-######Where the tests are stored in a folder called 'tests'
+###### Where the tests are stored in a folder called 'tests'
 ```bash
 teradaktyl tests
 ```
 
-#Coming in Future Iterations...
-####Dependency Injection
+# Coming in Future Iterations...
+#### Dependency Injection
 The ability to inject dependencies into classes to facilitate single unit testing.
-####Mocking
+#### Mocking
 The ability to mock dependencies injected into classes.
 
 [npm-image]: https://img.shields.io/npm/v/piczelspydr.svg?style=flat-square
