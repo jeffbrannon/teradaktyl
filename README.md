@@ -1,4 +1,4 @@
-![teradaktyl logo](teradaktyl.svg "teradaktyl logo")
+![teradaktyl logo](teradaktyl.png "teradaktyl logo")
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
