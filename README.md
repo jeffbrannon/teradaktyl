@@ -47,10 +47,28 @@ Assume we have a requirement to create a function which will add 2 numbers toget
 ###### Create a root level folder to group all of your projects tests...
 In the root folder of your project, create a new folder named **tests**
 ###### Create your test file...
-Within this **tests** folder, create a new Typescript file named **sum.test.ts**
+Within this **tests** folder, create a new Typescript file named **sum.test.ts** and insert the following code.
+```bash
+import { Teradaktyl } from 'teradaktyl';
+import { Add } from 'sum';
 
-
-
+Teradaktyl.Test("Assert 1 add 2 equals 3", (assert: Teradaktyl.IAssertable) => {
+    const result = Add(1, 3);
+    assert.AreEqual(3, result);
+});
+```
+This test will fail with the error of cannot find module **sum**.
+##### 2. Create the code satisfy the test
+###### Create a root level folder to group all of your projects code...
+In the root folder of your project, create a new folder named **src**
+###### Create your sum file...
+Within this **src** folder, create a new Typescript file named **sum.ts** and insert the following code.
+```bash
+export function Add(value1: number, value2: number) {
+    return value1 + value2;
+}
+```
+The test should now run successfully.
 
 # Coming in Future Iterations...
 #### Dependency Injection
