@@ -28,5 +28,10 @@
   },
   "bin": {
     "teradaktyl": "./teradaktyl.js"
-  }
+  },
+  "files": [
+    "build",
+    "teradaktyl.js",
+    "teradaktyl.png"
+  ]
 }
