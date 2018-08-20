@@ -1,6 +1,6 @@
 {
   "name": "teradaktyl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Typescript Unit Testing Framework",
   "main": "./build/src/teradaktyl.js",
   "typings": "./build/src/teradaktyl.d.ts",
